@@ -28,8 +28,15 @@ const MovieGrid: React.FC<MovieGridProps> = ({ movieQuery }) => {
             <h2 className='gridTitle'>
                 <span className='bg-white p-4 rounded-md'>{movieQuery}</span>
             </h2>
-
-            <MovieGridItem allMovies={allMovies} />
+            <div className='gridImages grid gap-8'>
+                {allMovies.map((movie) => {
+                    return (
+                        movie.poster !== 'No hay poster' && (
+                            <MovieGridItem key={movie.id} movie={movie} />
+                        )
+                    );
+                })}
+            </div>
             {/* <div
                 className='gridImages grid gap-8'
                 style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))' }}
